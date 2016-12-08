@@ -1,2 +1,2 @@
-class UploadsController < Sinatra::Base
+class UploadsController < ApplicationController
 end

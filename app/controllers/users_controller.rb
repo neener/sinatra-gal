@@ -1,2 +1,6 @@
-class UsersController < Sinatra::Base
+class UsersController < ApplicationController
+
+	get '/login' do
+		erb :'users/login'
+	end
 end

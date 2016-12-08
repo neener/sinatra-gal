@@ -1,2 +1,6 @@
-class CategoriesController < Sinatra::Base
+class CategoriesController < ApplicationController
+
+	get '/categories' do
+		
+	end
 end
