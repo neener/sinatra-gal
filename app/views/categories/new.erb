@@ -1,0 +1,13 @@
+<h1> Create New Category </h1>
+
+<% if @category && @category.errors %>
+	<% @category.errors.full_messages.each do |message| %>
+		<h4><%= message %></h4>
+	<% end %>
+<% end %>
+
+<form action="/categories" method="POST">
+	<label for="title"> Title: </label>
+	<input type="text" name="content">
+	<input type="submit" value="submit">
+</form>
