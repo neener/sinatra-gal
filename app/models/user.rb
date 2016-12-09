@@ -2,6 +2,8 @@ class User <ActiveRecord::Base
 	has_many :categories
 	has_many :uploads, :through => :categories
 
+	validates :username, :email, :password, presence: true
+
 	has_secure_password
 
 	def slug
