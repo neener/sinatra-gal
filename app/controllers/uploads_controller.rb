@@ -5,17 +5,25 @@ class UploadsController < ApplicationController
 	end
 
 	post '/uploads' do
+
+		@filename = params[:file][:filename]
+  		file = params[:file][:tempfile]
+
+  		File.open("./public/uploads/#{@filename}", 'wb') do |f|
+    		f.write(file.read)
+  		end
+  		
 		# Check if user uploaded a file
-		if params[:upload] && params[:upload][:filename]
-			filename = params[:upload][:filename]
-			file = params[:upload][:tempfile]
-			path = "./public/uploads/#{filename}"
+		# if params[:upload] && params[:upload][:filename]
+		# 	filename = params[:upload][:filename]
+		# 	file = params[:upload][:tempfile]
+		# 	path = "./public/uploads/#{filename}"
 
 			# Write file to disk
-			File.open(path, 'wb') do |f|
-				f.write(file.read)
-			end
-		end
+		# 	File.open(path, 'wb') do |f|
+		# 		f.write(file.read)
+		# 	end
+		# end
 
 		erb :'uploads/uploads'
 	end

@@ -1,4 +1,4 @@
-<%= @category.title %>
+<h2><%= @category.title %></h2>
 
 <form action="/categories/<%=@category.id%>/delete" method="POST">
 	<input id="hidden" type="hidden" name="_method" value="delete">
@@ -9,7 +9,7 @@
 
 <a href="/categories">Back to Category List</a>
 
-<h1>Upload Image</h1>
+<h4>Upload Image</h4>
 <form action="/uploads" method="POST" enctype="multipart/form-data">
 	<input type="file" name="image">
 	<input type="submit" value="Upload">
