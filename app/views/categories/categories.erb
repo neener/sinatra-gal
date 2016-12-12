@@ -1,4 +1,7 @@
-<h1> Create New Category </h1>
+<h5> You are logged in as, <%= current_user.username %> </br> <a href="/logout"> Logout </a></h5>
+
+
+<h2> Create New Category </h2>
 
 <% if @category && @category.errors %>
 	<% @category.errors.full_messages.each do |message| %>
@@ -15,7 +18,13 @@
 <h1> Categories </h1>
 <% @categories.each do |category| %>
 	<ul>
-		<li><a href="/uploads"><%= category.title %></a></li>
+		<li><a href="/categories/<%= category.id %>"><%= category.title %></a></li>	
+		Posted by: <%= category.user_id %>
 	</ul>
+
+
 <% end %>
+
+
+
 
