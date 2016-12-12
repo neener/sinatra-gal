@@ -1,9 +1,14 @@
 class UploadsController < ApplicationController
-	post '/upload' do
-		# Check if use uploaded a file
-		if params[:image] && params[:image][:filename]
-			filename = params[:image][:filename]
-			file = params[:image][:tempfile]
+
+	get '/uploads' do
+		erb :'uploads/create_upload'
+	end
+
+	post '/uploads' do
+		# Check if user uploaded a file
+		if params[:upload] && params[:upload][:filename]
+			filename = params[:upload][:filename]
+			file = params[:upload][:tempfile]
 			path = "./public/uploads/#{filename}"
 
 			# Write file to disk
@@ -11,5 +16,7 @@ class UploadsController < ApplicationController
 				f.write(file.read)
 			end
 		end
+
+		erb :'uploads/uploads'
 	end
 end

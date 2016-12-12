@@ -20,7 +20,8 @@ class ApplicationController < Sinatra::Base
 
 	    def current_user
 	      User.find(session[:user_id])
-	      # check out what cernan suggest with caching ||=ß
+	      # check out what cernan suggest with caching ||=
+	   		# memoization
 	    end
 	end
 end

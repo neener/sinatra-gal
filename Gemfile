@@ -12,3 +12,4 @@ gem 'require_all'
 gem 'shotgun'
 gem 'bcrypt'
 gem 'tux'
+gem "paperclip", "~> 5.0.0"
