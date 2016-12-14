@@ -11,6 +11,15 @@
 
 <h4>Upload Image</h4>
 <form action="/uploads" method="POST" enctype="multipart/form-data">
-	<input type="file" name="image">
+	<input type="hidden" name="category_id" value="<%=@category.id%>" />
+	<input type="file" name="file">
 	<input type="submit" value="Upload">
 </form>
+
+
+<% @category.uploads.each do |category_upload| %>
+
+	<img src="/uploads/<%= category_upload.image_url %>" />
+
+<% end %>
+

@@ -1,18 +1,22 @@
 class UploadsController < ApplicationController
 
-	get '/uploads' do
-		erb :'uploads/create_upload'
-	end
 
 	post '/uploads' do
-
+		
+		@category = Category.find_by_id(params[:category_id])
 		@filename = params[:file][:filename]
   		file = params[:file][:tempfile]
+  		@upload = Upload.new
+  		@upload.image_url = @filename
+  		@upload.category = @category 
+  		@upload.save
+
+  		# binding.pry
+
 
   		File.open("./public/uploads/#{@filename}", 'wb') do |f|
     		f.write(file.read)
   		end
-  		
 		# Check if user uploaded a file
 		# if params[:upload] && params[:upload][:filename]
 		# 	filename = params[:upload][:filename]
@@ -25,6 +29,6 @@ class UploadsController < ApplicationController
 		# 	end
 		# end
 
-		erb :'uploads/uploads'
+		redirect "/categories/#{@category.id}"
 	end
 end
