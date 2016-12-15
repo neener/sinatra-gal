@@ -12,7 +12,7 @@
 <h4>Upload Image</h4>
 <form action="/uploads" method="POST" enctype="multipart/form-data">
 	<input type="hidden" name="category_id" value="<%=@category.id%>" />
-	Title: <input type="text" name="title">
+	Title: <input type="text" name="title"></br>
 	<input type="file" name="file">
 	<input type="submit" value="Upload">
 </form>
@@ -21,8 +21,13 @@
 <% @category.uploads.each do |category_upload| %>
 	<ul>
 		<li>
-			<%= category_upload.title %>
+			<%= category_upload.title %></br>
 			<img src="/uploads/<%= category_upload.image_url %>" />
+
+			<form action="/uploads/<%=@category_upload.id%>/delete" method="DELETE">
+				<input id="hidden" type="hidden" name="_method" value="delete">
+				<button type="submit"> Delete </button>
+			</form>
 		</li>
 	</ul>
 <% end %>

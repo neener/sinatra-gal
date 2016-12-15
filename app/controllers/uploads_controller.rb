@@ -11,13 +11,17 @@ class UploadsController < ApplicationController
   		@upload.category = @category 
   		@upload.title = params[:title]
   		@upload.save
-
-  		# binding.pry
   		
   		File.open("./public/uploads/#{@filename}", 'wb') do |f|
     		f.write(file.read)
   		end
 
 		redirect "/categories/#{@category.id}"
+	end
+
+	delete '/uploads/:id/delete' do
+		@upload = Upload.find_by_id(params[:id])
+		@upload.delete
+		redirect "/categories/#{params[:id]}"
 	end
 end
