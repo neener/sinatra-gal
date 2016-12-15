@@ -9,25 +9,14 @@ class UploadsController < ApplicationController
   		@upload = Upload.new
   		@upload.image_url = @filename
   		@upload.category = @category 
+  		@upload.title = params[:title]
   		@upload.save
 
   		# binding.pry
-
-
+  		
   		File.open("./public/uploads/#{@filename}", 'wb') do |f|
     		f.write(file.read)
   		end
-		# Check if user uploaded a file
-		# if params[:upload] && params[:upload][:filename]
-		# 	filename = params[:upload][:filename]
-		# 	file = params[:upload][:tempfile]
-		# 	path = "./public/uploads/#{filename}"
-
-			# Write file to disk
-		# 	File.open(path, 'wb') do |f|
-		# 		f.write(file.read)
-		# 	end
-		# end
 
 		redirect "/categories/#{@category.id}"
 	end
