@@ -22,6 +22,6 @@ class UploadsController < ApplicationController
 	delete '/uploads/:id/delete' do
 		@upload = Upload.find_by_id(params[:id])
 		@upload.delete
-		redirect "/categories/#{params[:id]}"
+		redirect "/categories/#{@upload.category.id}"
 	end
 end

@@ -22,9 +22,9 @@
 	<ul>
 		<li>
 			<%= category_upload.title %></br>
-			<img src="/uploads/<%= category_upload.image_url %>" />
+			<img src="/uploads/<%=category_upload.image_url %>" />
 
-			<form action="/uploads/<%=@category_upload.id%>/delete" method="DELETE">
+			<form action="/uploads/<%=category_upload.id%>/delete" method="DELETE">
 				<input id="hidden" type="hidden" name="_method" value="delete">
 				<button type="submit"> Delete </button>
 			</form>
